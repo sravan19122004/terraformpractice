@@ -49,7 +49,7 @@ resource "aws_route_table_association" "myrtassociation" {
 
 resource "aws_security_group" "allow_web" {
   name        = "allow_web_traffic"
-  description = "Allow web inbound traffic"
+  description = "Allow web inbound trafficc"
   vpc_id      = aws_vpc.ntier.id
 
 #   ingress {
