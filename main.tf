@@ -46,12 +46,6 @@ resource "aws_route_table_association" "myrtassociation" {
 }
 
 
-resource "aws_key_pair" "keypair" {
-    key_name        = "fromterraform"
-    public_key      = file("~/.ssh/id_rsa.pub")
-}
-
-
 resource "aws_security_group" "allow_web" {
   name        = "allow_web_traffic"
   description = "Allow web inbound trafficc"
@@ -105,7 +99,6 @@ resource "aws_instance" "web" {
   subnet_id     = aws_subnet.subnet2.id
   vpc_security_group_ids = [aws_security_group.allow_web.id]
   associate_public_ip_address = "true"
-  key_name                    = aws_key_pair.keypair.key_name
   tags = {
     Name = "newinstance"
   }
